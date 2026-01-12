@@ -1,0 +1,469 @@
+/* ==========================================
+   KEYFRAME ANIMATIONS - Backwoods Theme
+   ========================================== */
+
+/* ==========================================
+   GRADIENT FLOAT
+   ========================================== */
+@keyframes gradientFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(5%, 5%) rotate(3deg);
+  }
+  50% {
+    transform: translate(-3%, 8%) rotate(-2deg);
+  }
+  75% {
+    transform: translate(8%, -3%) rotate(2deg);
+  }
+}
+
+/* ==========================================
+   MARQUEE
+   ========================================== */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================
+   BOUNCE ARROW
+   ========================================== */
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+/* ==========================================
+   TWINKLE STARS
+   ========================================== */
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* ==========================================
+   GLOW PULSE
+   ========================================== */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* ==========================================
+   FADE IN UP
+   ========================================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   FADE IN DOWN
+   ========================================== */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   FADE IN LEFT
+   ========================================== */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================
+   FADE IN RIGHT
+   ========================================== */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================
+   SCALE IN
+   ========================================== */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+   FLAME FLICKER
+   ========================================== */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scaleY(1.1) scaleX(0.95);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scaleY(0.95) scaleX(1.05);
+    opacity: 1;
+  }
+  75% {
+    transform: scaleY(1.05) scaleX(0.98);
+    opacity: 0.95;
+  }
+}
+
+/* ==========================================
+   FIREFLY FLOAT
+   ========================================== */
+@keyframes fireflyFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(var(--x-end, 100px), var(--y-end, -100px));
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x-final, 50px), var(--y-final, -200px));
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   LEAF FALL
+   ========================================== */
+@keyframes leafFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(45vh) rotate(180deg) translateX(50px);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(-30px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   PULSE
+   ========================================== */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ==========================================
+   ROTATE
+   ========================================== */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   SHAKE
+   ========================================== */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+/* ==========================================
+   SLIDE IN FROM BOTTOM
+   ========================================== */
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   SLIDE OUT TO TOP
+   ========================================== */
+@keyframes slideOutTop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   COUNTER INCREMENT
+   ========================================== */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   HOVER GLOW
+   ========================================== */
+@keyframes hoverGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(232, 93, 4, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(232, 93, 4, 0.5);
+  }
+}
+
+/* ==========================================
+   BORDER PULSE
+   ========================================== */
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: rgba(232, 93, 4, 0.3);
+  }
+  50% {
+    border-color: rgba(232, 93, 4, 0.8);
+  }
+}
+
+/* ==========================================
+   TEXT REVEAL
+   ========================================== */
+@keyframes textReveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* ==========================================
+   BLUR IN
+   ========================================== */
+@keyframes blurIn {
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   SMOKE RISE
+   ========================================== */
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-200px) scale(2);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   PARALLAX SLOW
+   ========================================== */
+@keyframes parallaxSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+/* ==========================================
+   UTILITY ANIMATION CLASSES
+   ========================================== */
+.animate-fade-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-fade-down {
+  animation: fadeInDown 0.6s ease forwards;
+}
+
+.animate-fade-left {
+  animation: fadeInLeft 0.6s ease forwards;
+}
+
+.animate-fade-right {
+  animation: fadeInRight 0.6s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Animation Delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Animation Durations */
+.duration-fast { animation-duration: 0.3s; }
+.duration-normal { animation-duration: 0.6s; }
+.duration-slow { animation-duration: 1s; }
+.duration-slower { animation-duration: 1.5s; }
+
+/* ==========================================
+   PRELOADER FLAME ANIMATION
+   ========================================== */
+.preloader .flame-1 {
+  animation: flameFlicker 0.5s ease-in-out infinite;
+}
+
+.preloader .flame-2 {
+  animation: flameFlicker 0.4s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+
+.preloader .flame-3 {
+  animation: flameFlicker 0.45s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+/* ==========================================
+   REDUCED MOTION
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-content {
+    animation: none;
+  }
+
+  .hero-gradient {
+    animation: none;
+  }
+
+  .stars {
+    animation: none;
+  }
+
+  .campfire-glow {
+    animation: none;
+  }
+
+  .scroll-arrow {
+    animation: none;
+  }
+}

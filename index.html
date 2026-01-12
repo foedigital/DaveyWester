@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davey Wester | Comedy From The Backwoods</title>
+  <meta name="description" content="Davey Wester - Stand-up comedian bringing laughs from the backwoods. Catch him live on tour!">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Libraries CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Fallback styles -->
+  <style>
+    /* Hide preloader */
+    .preloader {
+      display: none !important;
+    }
+
+    /* Hide custom cursor */
+    .cursor, .cursor-follower {
+      display: none !important;
+    }
+
+    /* Use standard cursor */
+    * {
+      cursor: auto;
+    }
+
+    a, button, [role="button"], input[type="submit"], .video-card, .swiper-btn {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Noise/Grain Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-icon">
+        <svg viewBox="0 0 100 100" class="campfire-icon">
+          <path class="flame flame-1" d="M50 20 Q60 35 50 50 Q40 35 50 20" fill="#e85d04"/>
+          <path class="flame flame-2" d="M45 30 Q55 42 45 55 Q35 42 45 30" fill="#f4a024"/>
+          <path class="flame flame-3" d="M55 30 Q65 42 55 55 Q45 42 55 30" fill="#f4a024"/>
+          <path class="logs" d="M30 60 L70 55 M25 65 L75 60" stroke="#8b5a2b" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="preloader-text">DAVEY WESTER</div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill" id="preloader-fill"></div>
+      </div>
+      <div class="preloader-tagline">Stokin' the fire...</div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Floating Particles (Fireflies) -->
+  <div class="fireflies" id="fireflies"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-text">DAVEY WESTER</span>
+    </a>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#hero" class="nav-link" data-text="Home"><span>Home</span></a>
+      <a href="#tour" class="nav-link" data-text="Tour"><span>Tour</span></a>
+      <a href="#videos" class="nav-link" data-text="Videos"><span>Videos</span></a>
+      <a href="#about" class="nav-link" data-text="About"><span>About</span></a>
+      <a href="#contact" class="nav-link" data-text="Contact"><span>Contact</span></a>
+    </div>
+
+    <div class="nav-social">
+      <a href="https://www.instagram.com/daveywester/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@Davidwesrer" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@daveywester" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/daveywester" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="#hero" class="mobile-link">Home</a>
+      <a href="#tour" class="mobile-link">Tour Dates</a>
+      <a href="#videos" class="mobile-link">Videos</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+    <div class="mobile-menu-footer">
+      <div class="social-links">
+        <a href="https://www.instagram.com/daveywester/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@Davidwesrer" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@daveywester" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">Stand-Up Comedy</div>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">DAVEY</span></span>
+          <span class="line"><span class="line-inner">WESTER</span></span>
+        </h1>
+        <p class="hero-tagline">Comedy From The Backwoods</p>
+        <p class="hero-subtitle">Just a fun-lovin' country boy tellin' stories around the campfire... if the campfire was a spotlight and the woods were full of drunk strangers.</p>
+
+        <div class="hero-ctas">
+          <a href="#tour" class="btn btn-primary">
+            <span>See Tour Dates</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#videos" class="btn btn-outline">
+            <span>Watch Clips</span>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="hero-image-frame">
+          <img src="assets/images/1.png" alt="Davey Wester" class="hero-photo">
+          <div class="hero-image-border"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span>Scroll Down, Y'all</span>
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Floating Leaves -->
+    <div class="floating-leaves"></div>
+  </section>
+
+  <!-- Marquee Section -->
+  <section class="marquee-section">
+    <div class="marquee">
+      <div class="marquee-content">
+        <span class="marquee-item">Stand-Up Comedy</span>
+        <span class="marquee-item">Backwoods Humor</span>
+        <span class="marquee-item">Country Boy Laughs</span>
+        <span class="marquee-item">Campfire Stories</span>
+        <span class="marquee-item">Redneck Wisdom</span>
+        <span class="marquee-item">Stand-Up Comedy</span>
+        <span class="marquee-item">Backwoods Humor</span>
+        <span class="marquee-item">Country Boy Laughs</span>
+        <span class="marquee-item">Campfire Stories</span>
+        <span class="marquee-item">Redneck Wisdom</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mountain Divider -->
+  <div class="section-divider mountain-divider">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,120 L0,60 L180,90 L360,30 L540,75 L720,15 L900,60 L1080,25 L1260,70 L1440,40 L1440,120 Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- Tour Dates Section -->
+  <section class="tour-section" id="tour">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Live Shows</span>
+        <h2 class="section-title">Catch Me Live</h2>
+        <p class="section-subtitle">Come on out and let's have some laughs together</p>
+      </div>
+
+      <div class="tour-grid">
+        <!-- Tour Card 1 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="tour-date">
+            <span class="tour-month">JAN</span>
+            <span class="tour-day">15</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">The Funny Barn</h3>
+            <p class="tour-location">Nashville, TN</p>
+            <p class="tour-time">8:00 PM</p>
+          </div>
+          <a href="#" class="btn btn-small">Get Tickets</a>
+        </div>
+
+        <!-- Tour Card 2 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="tour-date">
+            <span class="tour-month">JAN</span>
+            <span class="tour-day">22</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">Backwoods Comedy Club</h3>
+            <p class="tour-location">Austin, TX</p>
+            <p class="tour-time">9:00 PM</p>
+          </div>
+          <a href="#" class="btn btn-small">Get Tickets</a>
+        </div>
+
+        <!-- Tour Card 3 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-date">
+            <span class="tour-month">FEB</span>
+            <span class="tour-day">05</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">The Rusty Mic</h3>
+            <p class="tour-location">Atlanta, GA</p>
+            <p class="tour-time">7:30 PM</p>
+          </div>
+          <span class="badge-sold-out">Sold Out</span>
+        </div>
+
+        <!-- Tour Card 4 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="tour-date">
+            <span class="tour-month">FEB</span>
+            <span class="tour-day">14</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">Campfire Comedy Night</h3>
+            <p class="tour-location">Denver, CO</p>
+            <p class="tour-time">8:00 PM</p>
+          </div>
+          <a href="#" class="btn btn-small">Get Tickets</a>
+        </div>
+
+        <!-- Tour Card 5 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="tour-date">
+            <span class="tour-month">FEB</span>
+            <span class="tour-day">28</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">The Lodge Lounge</h3>
+            <p class="tour-location">Charlotte, NC</p>
+            <p class="tour-time">9:00 PM</p>
+          </div>
+          <a href="#" class="btn btn-small">Get Tickets</a>
+        </div>
+
+        <!-- Tour Card 6 -->
+        <div class="tour-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="tour-date">
+            <span class="tour-month">MAR</span>
+            <span class="tour-day">12</span>
+          </div>
+          <div class="tour-info">
+            <h3 class="tour-venue">Timber Creek Theater</h3>
+            <p class="tour-location">Dallas, TX</p>
+            <p class="tour-time">8:00 PM</p>
+          </div>
+          <a href="#" class="btn btn-small">Get Tickets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tree Line Divider -->
+  <div class="section-divider tree-divider">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <!-- Pine trees silhouette -->
+      <path d="M0,200 L0,180 L30,180 L30,120 L15,120 L40,60 L25,60 L50,10 L75,60 L60,60 L85,120 L70,120 L70,180 L100,180 L100,140 L85,140 L110,80 L95,80 L120,30 L145,80 L130,80 L155,140 L140,140 L140,180 L170,180 L170,160 L155,160 L180,100 L165,100 L190,40 L215,100 L200,100 L225,160 L210,160 L210,180 L240,180 L240,130 L225,130 L250,70 L235,70 L260,20 L285,70 L270,70 L295,130 L280,130 L280,180 L310,180 L310,150 L295,150 L320,90 L305,90 L330,35 L355,90 L340,90 L365,150 L350,150 L350,180 L1440,180 L1440,200 Z" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <!-- Videos Section -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Comedy Clips</span>
+        <h2 class="section-title">Watch & Laugh</h2>
+      </div>
+
+      <div class="video-carousel-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper video-swiper">
+          <div class="swiper-wrapper">
+            <!-- Video Slide 1 -->
+            <div class="swiper-slide">
+              <div class="video-card" data-video-id="jLNAt1ky9sw">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/jLNAt1ky9sw/maxresdefault.jpg" alt="Comedy Clip 1">
+                  <div class="video-play">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="video-info">
+                  <h3>Stand-Up Short</h3>
+                  <p>YouTube Short</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Slide 2 -->
+            <div class="swiper-slide">
+              <div class="video-card" data-video-id="V6sM3nhWCM0">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/V6sM3nhWCM0/maxresdefault.jpg" alt="Comedy Clip 2">
+                  <div class="video-play">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="video-info">
+                  <h3>Stand-Up Clip</h3>
+                  <p>Live Performance</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Slide 3 -->
+            <div class="swiper-slide">
+              <div class="video-card" data-video-id="AziKhfXlfSI">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/AziKhfXlfSI/maxresdefault.jpg" alt="Comedy Clip 3">
+                  <div class="video-play">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="video-info">
+                  <h3>Stand-Up Clip</h3>
+                  <p>Live Performance</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Slide 4 -->
+            <div class="swiper-slide">
+              <div class="video-card" data-video-id="N3NhJnfcfb4">
+                <div class="video-thumbnail">
+                  <img src="https://img.youtube.com/vi/N3NhJnfcfb4/maxresdefault.jpg" alt="Comedy Clip 4">
+                  <div class="video-play">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="video-info">
+                  <h3>Stand-Up Clip</h3>
+                  <p>Live Performance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-nav">
+          <button class="swiper-btn swiper-btn-prev">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button class="swiper-btn swiper-btn-next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="videos-cta" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://www.youtube.com/@Davidwesrer" target="_blank" rel="noopener" class="btn btn-outline">
+          <span>See More on YouTube</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right">
+          <div class="polaroid-frame" data-tilt data-tilt-max="5">
+            <img src="assets/images/1.png" alt="Davey Wester">
+            <div class="polaroid-caption">The one and only</div>
+          </div>
+        </div>
+
+        <div class="about-content" data-aos="fade-left">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Howdy, I'm Davey</h2>
+          <div class="about-text">
+            <p>Blue Collar Comedian Davey Wester brings a unique presence to today's comedy scene as a Nationwide Headliner. Davey was passed by Mitzi Shore herself and has been a regular at The World Famous Comedy Store in Hollywood, CA for nearly two decades!</p>
+            <p>When I'm not on stage, you can find me in the great outdoors doing anything that keeps me away from decent WiFi and close to nature. Come catch a show - I promise you'll laugh harder than the time my uncle tried to teach his goat to play fetch.</p>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+              <span class="stat-number" data-count="500">0</span>
+              <span class="stat-label">Shows Performed</span>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+              <span class="stat-number" data-count="35">0</span>
+              <span class="stat-label">States Toured</span>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+              <span class="stat-number" data-count="9999">0</span>
+              <span class="stat-label">Beers Consumed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mailing List Section -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="newsletter-bg">
+      <div class="stars"></div>
+      <div class="campfire-glow"></div>
+    </div>
+    <div class="container">
+      <div class="newsletter-content" data-aos="fade-up">
+        <span class="section-tag">Stay in the Loop</span>
+        <h2 class="newsletter-title">Join the Mailing List</h2>
+        <p class="newsletter-subtitle">Be the first to know about upcoming shows, tour dates, new videos, and behind-the-scenes shenanigans. No spam - just good ol' country updates delivered straight to your inbox.</p>
+
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="form-fields">
+            <div class="form-group">
+              <input type="text" id="newsletter-name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="newsletter-btn">
+            <span class="btn-text">Join the List</span>
+            <span class="btn-loading">
+              <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
+              </svg>
+              Signing Up...
+            </span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+          <p class="form-error" id="newsletter-error"></p>
+        </form>
+
+        <div class="newsletter-success" id="newsletter-success">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+          <span>Welcome to the campfire, partner! Check your inbox for a confirmation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Let's Talk</h2>
+          <p class="contact-text">Got a venue that needs some country comedy? Want me at your festival, corporate event, or cousin's wedding? (I draw the line at funerals... unless it's an Irish wake.)</p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>daveywester@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="social-links-large">
+            <a href="https://www.instagram.com/daveywester/" target="_blank" rel="noopener" class="social-link" data-cursor-text="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@Davidwesrer" target="_blank" rel="noopener" class="social-link" data-cursor-text="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@daveywester" target="_blank" rel="noopener" class="social-link" data-cursor-text="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/daveywester" target="_blank" rel="noopener" class="social-link" data-cursor-text="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper" data-aos="fade-left">
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a topic...</option>
+                <option value="booking">Booking Inquiry</option>
+                <option value="press">Press/Media</option>
+                <option value="collab">Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span>Send Message</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- Pine Tree Silhouette -->
+    <div class="footer-trees">
+      <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+        <path d="M0,150 L0,100 L40,100 L40,50 L20,50 L50,0 L80,50 L60,50 L60,100 L100,100 L100,70 L80,70 L110,20 L140,70 L120,70 L120,100 L160,100 L160,60 L140,60 L170,10 L200,60 L180,60 L180,100 L220,100 L220,80 L200,80 L230,30 L260,80 L240,80 L240,100 L280,100 L280,55 L260,55 L290,5 L320,55 L300,55 L300,100 L340,100 L340,75 L320,75 L350,25 L380,75 L360,75 L360,100 L400,100 L400,90 L380,90 L410,40 L440,90 L420,90 L420,100 L460,100 L460,65 L440,65 L470,15 L500,65 L480,65 L480,100 L1440,100 L1440,150 Z" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="footer-logo">DAVEY WESTER</span>
+          <p class="footer-tagline">Comedy From The Backwoods</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#tour">Tour</a>
+          <a href="#videos">Videos</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://www.instagram.com/daveywester/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@Davidwesrer" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@daveywester" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/daveywester" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2024 Davey Wester. All rights reserved.</p>
+        <p class="footer-joke">Built in the woods with questionable WiFi</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Easter Egg Container -->
+  <div class="easter-egg" id="easter-egg">
+    <div class="easter-egg-content">
+      <img src="assets/images/3.png" alt="Secret Davey">
+      <p>You found the secret! Here's a picture of me trying to figure out what a "hashtag" is.</p>
+      <button class="btn btn-small" onclick="document.getElementById('easter-egg').classList.remove('active')">Close</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
